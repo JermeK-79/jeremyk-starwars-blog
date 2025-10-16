@@ -1,4 +1,5 @@
 import { CharacterCard } from "./CharacterCard";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const CharacterSet = ({ allPeople, dispatch }) => {
     return (

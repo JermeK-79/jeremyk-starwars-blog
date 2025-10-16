@@ -41,20 +41,61 @@ export const initialStore=()=>{
         uid: "10", 
         name: "Obi-Wan Kenobi", 
         url: "https://www.swapi.tech/api/people/10"}
-    ]
+    ],
+    singlePerson: [],
+    allPlanets: [],
+    singlePlanet: [],
+    allVehicles: [],
+    singleVehicle: [],
+    favorites: [],
   }
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
-
-      const { id,  color } = action.payload
-
-      return {
-        ...store,
-        todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
-      };
+    case 'fetchedAllPeople':
+      {
+        const peopleArray = action.payload;
+        return {
+          ...store,
+          allPeople: [...peopleArray],
+        }
+      }
+    case 'fetchedSinglePerson':
+      {
+        const personObj = action.payload;
+        return {
+          ...store,
+          singlePerson: [personObj]
+        }
+      }
+    case 'fetchedAllPlanets':
+      {
+        break;
+      }
+    case 'fetchAllVehicles':
+      {
+        break;
+      }
+    case 'favedProfile':
+      {
+        const { uid, name } = action.payload;
+        if (!store.favorites.some(profile => profile.uid === uid && profile.name === name)) {
+        return {
+          ...store,
+          favorites: [...store.favorites, {uid: uid, name: name}]
+          }
+        } 
+      }
+      case 'removedFavorite':
+        {
+          const {name} = action.payload;
+          const filteredArray = store.favorites.filter(favorite => favorite.name !== name);
+          return{
+            ...store,
+            favorites: [...filteredArray]
+          }    
+        }
     default:
       throw Error('Unknown action.');
   }    

@@ -1,8 +1,8 @@
-import { CharacterCard } from "./CharacterCard";
+import { VehicleCard } from "./VehicleCard";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useRef } from "react";
 
-export const CharacterSet = ({ allPeople, dispatch }) => {
+export const VehicleSet = ({ allVehicles, dispatch }) => {
   const { store } = useGlobalReducer();
   const scrollRef = useRef(null);
 
@@ -30,17 +30,16 @@ export const CharacterSet = ({ allPeople, dispatch }) => {
         ref={scrollRef}
         className="row d-flex flex-nowrap overflow-auto"
       >
-        {allPeople.map(person => {
+        {allVehicles.map(vehicle => {
           return (
-            <CharacterCard 
-              key={person.uid}
-              uid={person.uid}
-              name={person.name}
-              gender={person.gender}
-              hair_color={person.hair_color}
-              eye_color={person.eye_color}
+            <VehicleCard 
+              key={vehicle.uid}
+              uid={vehicle.uid}
+              name={vehicle.name}
+              vehicle_class={vehicle.vehicle_class}
+              length={vehicle.length}
               dispatch={dispatch}
-              isFavorited={store.favorites?.some(fav => fav.uid === person.uid)}
+              isFavorited={store.favorites?.some(fav => fav.uid === vehicle.uid)}
             />
           )
         })}

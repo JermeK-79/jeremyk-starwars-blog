@@ -1,69 +1,66 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import { fetchSinglePerson } from "../lib/fetch";
+import { fetchSingleVehicle } from "../lib/fetch";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export const PeopleProfilePage = () => {
+export const VehicleProfilePage = () => {
   const { store, dispatch } = useGlobalReducer();
   const { uid } = useParams();
   
   useEffect(() => {
-    fetchSinglePerson(parseInt(uid), dispatch);
+    fetchSingleVehicle(parseInt(uid), dispatch);
   }, [uid, dispatch]);
   
   return (
     <>
       <div className="container mt-5">
-        {store.singlePerson ? (
+        {store.singleVehicle ? (
           <div className="row">
             <div className="col-md-6">
               <img 
-                src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/people/${uid}.jpg?raw=true`}
+                src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/vehicles/${uid}.jpg?raw=true`}
                 className="img-fluid"
-                alt={store.singlePerson.name}
+                alt={store.singleVehicle.name}
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
             <div className="col-md-6">
-              <h1 className="display-4">{store.singlePerson.name}</h1>
+              <h1 className="display-4">{store.singleVehicle.name}</h1>
               <p className="lead mt-3">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
                 doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
                 veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim 
-                ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
-                consequuntur magni dolores eos qui ratione voluptatem sequi.
+                ipsam voluptatem quia voluptas sit aspernatur
               </p>
-              
               <hr style={{ borderTop: '2px solid #dc3545', marginTop: '2rem', marginBottom: '2rem' }} />
-              
               <div className="row text-center">
                 <div className="col-4">
                   <h6 className="text-danger">Name</h6>
-                  <p className="text-danger">{store.singlePerson.name}</p>
+                  <p className="text-danger">{store.singleVehicle.name}</p>
                 </div>
                 <div className="col-4">
-                  <h6 className="text-danger">Birth Year</h6>
-                  <p className="text-danger">{store.singlePerson.birth_year}</p>
+                  <h6 className="text-danger">Model</h6>
+                  <p className="text-danger">{store.singleVehicle.model}</p>
                 </div>
                 <div className="col-4">
-                  <h6 className="text-danger">Gender</h6>
-                  <p className="text-danger">{store.singlePerson.gender}</p>
+                  <h6 className="text-danger">Vehicle Class</h6>
+                  <p className="text-danger">{store.singleVehicle.vehicle_class}</p>
                 </div>
               </div>
               
               <div className="row text-center mt-3">
                 <div className="col-4">
-                  <h6 className="text-danger">Height</h6>
-                  <p className="text-danger">{store.singlePerson.height}</p>
+                  <h6 className="text-danger">Manufacturer</h6>
+                  <p className="text-danger">{store.singleVehicle.manufacturer}</p>
                 </div>
                 <div className="col-4">
-                  <h6 className="text-danger">Skin Color</h6>
-                  <p className="text-danger">{store.singlePerson.skin_color}</p>
+                  <h6 className="text-danger">Length</h6>
+                  <p className="text-danger">{store.singleVehicle.length}</p>
                 </div>
                 <div className="col-4">
-                  <h6 className="text-danger">Eye Color</h6>
-                  <p className="text-danger">{store.singlePerson.eye_color}</p>
+                  <h6 className="text-danger">Passengers</h6>
+                  <p className="text-danger">{store.singleVehicle.passengers}</p>
                 </div>
               </div>
             </div>

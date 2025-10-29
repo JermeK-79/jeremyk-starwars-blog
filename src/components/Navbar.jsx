@@ -5,10 +5,14 @@ export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
   
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-light bg-dark">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">Star Wars Reading Blog</span>
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg" 
+            alt="Star Wars" 
+            height="60"
+          />
         </Link>
         <div className="ml-auto">
           <div className="btn-group">

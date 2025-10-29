@@ -1,8 +1,8 @@
-import { CharacterCard } from "./CharacterCard";
+import { PlanetCard } from "./PlanetCard";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useRef } from "react";
 
-export const CharacterSet = ({ allPeople, dispatch }) => {
+export const PlanetSet = ({ allPlanets, dispatch }) => {
   const { store } = useGlobalReducer();
   const scrollRef = useRef(null);
 
@@ -30,17 +30,16 @@ export const CharacterSet = ({ allPeople, dispatch }) => {
         ref={scrollRef}
         className="row d-flex flex-nowrap overflow-auto"
       >
-        {allPeople.map(person => {
+        {allPlanets.map(planet => {
           return (
-            <CharacterCard 
-              key={person.uid}
-              uid={person.uid}
-              name={person.name}
-              gender={person.gender}
-              hair_color={person.hair_color}
-              eye_color={person.eye_color}
+            <PlanetCard 
+              key={planet.uid}
+              uid={planet.uid}
+              name={planet.name}
+              population={planet.population}
+              terrain={planet.terrain}
               dispatch={dispatch}
-              isFavorited={store.favorites?.some(fav => fav.uid === person.uid)}
+              isFavorited={store.favorites?.some(fav => fav.uid === planet.uid)}
             />
           )
         })}

@@ -4,21 +4,20 @@ const style = {
   width: "18rem",
 };
 
-export const CharacterCard = ({ uid, name, dispatch, isFavorited, gender, hair_color, eye_color }) => {
+export const VehicleCard = ({ uid, name, dispatch, isFavorited, vehicle_class, length }) => {
   return (
     <div className="card" style={style}>
       <img 
-        src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/people/${uid}.jpg?raw=true`}
+        src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/vehicles/${uid}.jpg?raw=true`}
         className="card-img-top" 
         alt={name}
       />
       <div className="card-body">
         <h5 className="card-title fw-bold">{name}</h5>
-        <p className="mb-1">Gender: {gender}</p>
-        <p className="mb-1">Hair Color: {hair_color}</p>
-        <p className="mb-3">Eye-Color: {eye_color}</p>
+        <p className="mb-1">Class: {vehicle_class}</p>
+        <p className="mb-3">Length: {length}</p>
         <div className="d-flex justify-content-between">
-          <Link to={`/profile-page/people/${uid}`}>
+          <Link to={`/profile-page/vehicles/${uid}`}>
             <button className="btn btn-outline-primary">Learn more!</button>
           </Link>
           <button

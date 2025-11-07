@@ -39,7 +39,7 @@ export const VehicleSet = ({ allVehicles, dispatch }) => {
               vehicle_class={vehicle.vehicle_class}
               length={vehicle.length}
               dispatch={dispatch}
-              isFavorited={store.favorites?.some(fav => fav.uid === vehicle.uid)}
+              isFavorited={store.favorites?.some(fav => fav.uid === vehicle.uid && fav.type === 'vehicles')}
             />
           )
         })}

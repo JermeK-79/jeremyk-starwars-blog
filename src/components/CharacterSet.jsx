@@ -40,7 +40,7 @@ export const CharacterSet = ({ allPeople, dispatch }) => {
               hair_color={person.hair_color}
               eye_color={person.eye_color}
               dispatch={dispatch}
-              isFavorited={store.favorites?.some(fav => fav.uid === person.uid)}
+              isFavorited={store.favorites?.some(fav => fav.uid === person.uid && fav.type === 'people')}
             />
           )
         })}

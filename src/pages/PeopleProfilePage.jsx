@@ -9,8 +9,10 @@ export const PeopleProfilePage = () => {
   const { uid } = useParams();
   
   useEffect(() => {
-    fetchSinglePerson(parseInt(uid), dispatch);
-  }, [uid, dispatch]);
+    if (uid) {
+      fetchSinglePerson(uid, dispatch);
+    }
+  }, [uid]);
   
   return (
     <>
@@ -25,6 +27,7 @@ export const PeopleProfilePage = () => {
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
+            
             <div className="col-md-6">
               <h1 className="display-4">{store.singlePerson.name}</h1>
               <p className="lead mt-3">

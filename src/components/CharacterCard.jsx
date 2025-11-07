@@ -21,12 +21,12 @@ export const CharacterCard = ({ uid, name, dispatch, isFavorited, gender, hair_c
           <Link to={`/profile-page/people/${uid}`}>
             <button className="btn btn-outline-primary">Learn more!</button>
           </Link>
-          <button
+         <button
             className="btn btn-outline-warning"
             onClick={() => {
               dispatch({
                 type: 'favedProfile',
-                payload: { uid: uid, name: name }
+                payload: { uid: uid, name: name, type: 'people' }
               })
             }}
           >

@@ -61,31 +61,31 @@ export default function storeReducer(store, action = {}) {
         }
       }
     case 'favedProfile':
-      {
-        const { uid, name } = action.payload;
-        const exists = store.favorites.some(profile => profile.uid === uid);
-        
-        if (exists) {
-          return {
-            ...store,
-            favorites: store.favorites.filter(fav => fav.uid !== uid)
-          }
-        } else {
-          return {
-            ...store,
-            favorites: [...store.favorites, {uid: uid, name: name}]
-          }
-        }
+  {
+    const { uid, name, type } = action.payload;
+    const exists = store.favorites.some(profile => profile.uid === uid && profile.type === type);
+    
+    if (exists) {
+      return {
+        ...store,
+        favorites: store.favorites.filter(fav => !(fav.uid === uid && fav.type === type))
       }
+    } else {
+      return {
+        ...store,
+        favorites: [...store.favorites, {uid: uid, name: name, type: type}]
+      }
+    }
+  }
     case 'removedFavorite':
-      {
-        const {name} = action.payload;
-        const filteredArray = store.favorites.filter(favorite => favorite.name !== name);
-        return {
-          ...store,
-          favorites: [...filteredArray]
-        }    
-      }
+  {
+    const { uid, type } = action.payload;
+    const filteredArray = store.favorites.filter(favorite => !(favorite.uid === uid && favorite.type === type));
+    return {
+      ...store,
+      favorites: [...filteredArray]
+    }    
+  }
     default:
       throw Error('Unknown action.');
   }    

@@ -25,7 +25,7 @@ export const PlanetCard = ({ uid, name, dispatch, isFavorited, population, terra
             onClick={() => {
               dispatch({
                 type: 'favedProfile',
-                payload: { uid: uid, name: name }
+                payload: { uid: uid, name: name, type: 'planets' }
               })
             }}
           >

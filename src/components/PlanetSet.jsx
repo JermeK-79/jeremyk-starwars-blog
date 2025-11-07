@@ -39,7 +39,7 @@ export const PlanetSet = ({ allPlanets, dispatch }) => {
               population={planet.population}
               terrain={planet.terrain}
               dispatch={dispatch}
-              isFavorited={store.favorites?.some(fav => fav.uid === planet.uid)}
+              isFavorited={store.favorites?.some(fav => fav.uid === planet.uid && fav.type === 'planets')}
             />
           )
         })}

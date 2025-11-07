@@ -9,8 +9,10 @@ export const VehicleProfilePage = () => {
   const { uid } = useParams();
   
   useEffect(() => {
-    fetchSingleVehicle(parseInt(uid), dispatch);
-  }, [uid, dispatch]);
+    if (uid) {
+      fetchSingleVehicle(uid, dispatch);
+    }
+  }, [uid]);
   
   return (
     <>
@@ -25,6 +27,7 @@ export const VehicleProfilePage = () => {
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
+            
             <div className="col-md-6">
               <h1 className="display-4">{store.singleVehicle.name}</h1>
               <p className="lead mt-3">
@@ -33,7 +36,9 @@ export const VehicleProfilePage = () => {
                 veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim 
                 ipsam voluptatem quia voluptas sit aspernatur
               </p>
+              
               <hr style={{ borderTop: '2px solid #dc3545', marginTop: '2rem', marginBottom: '2rem' }} />
+              
               <div className="row text-center">
                 <div className="col-4">
                   <h6 className="text-danger">Name</h6>

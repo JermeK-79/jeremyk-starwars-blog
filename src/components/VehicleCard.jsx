@@ -25,7 +25,7 @@ export const VehicleCard = ({ uid, name, dispatch, isFavorited, vehicle_class, l
             onClick={() => {
               dispatch({
                 type: 'favedProfile',
-                payload: { uid: uid, name: name }
+                payload: { uid: uid, name: name, type: 'vehicles' }
               })
             }}
           >
